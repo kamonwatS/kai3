@@ -1,0 +1,17 @@
+
+# Database files
+TodoApp/todos.db
+TodoApp/todos.db-shm
+TodoApp/todos.db-wal
+
+# Visual Studio / Visual Studio Code
+TodoApp/bin/
+TodoApp/obj/
+.vs/
+.vscode/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
