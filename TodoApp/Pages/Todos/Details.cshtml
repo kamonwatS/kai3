@@ -1,0 +1,52 @@
+@page
+@model TodoApp.Pages.Todos.DetailsModel
+@{
+    ViewData["Title"] = "Todo Details";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1>Todo Details</h1>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @Model.Todo.Title
+                        @if (Model.Todo.IsCompleted)
+                        {
+                            <span class="badge bg-success ms-2">Completed</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-warning ms-2">Pending</span>
+                        }
+                    </h5>
+                    
+                    @if (!string.IsNullOrEmpty(Model.Todo.Description))
+                    {
+                        <p class="card-text">@Model.Todo.Description</p>
+                    }
+                    
+                    <div class="text-muted">
+                        <small>
+                            <strong>Created:</strong> @Model.Todo.CreatedAt.ToString("MMM dd, yyyy HH:mm")
+                        </small>
+                        <br />
+                        @if (Model.Todo.CompletedAt.HasValue)
+                        {
+                            <small>
+                                <strong>Completed:</strong> @Model.Todo.CompletedAt.Value.ToString("MMM dd, yyyy HH:mm")
+                            </small>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <a asp-page="./Edit" asp-route-id="@Model.Todo.Id" class="btn btn-primary">Edit</a>
+                <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>
